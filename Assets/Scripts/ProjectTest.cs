@@ -55,7 +55,7 @@ public class ProjectTest : MonoBehaviour
         // This Debug Log tells you how much damage you did and to whatever enemy  
         Debug.Log("Player dealt " + damageDealt + " damage to the " + enemyName + ".");
 
-        // This will check if the enemy is dead, if 
+        // This will check if the enemy is dead 
         if (enemyHP <= 0)
         {
             Debug.Log("The " + enemyName + " has been defeated!");
