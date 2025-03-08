@@ -52,10 +52,10 @@ public class ProjectTest : MonoBehaviour
         // Applying the damage to the enemy's health
         enemyHP -= damageDealt;
 
-        // This Debug Log tells you how much damage you did to whatever enemy  
+        // This Debug Log tells you how much damage you did and to whatever enemy  
         Debug.Log("Player dealt " + damageDealt + " damage to the " + enemyName + ".");
 
-        // Check if the enemy is dead
+        // This will check if the enemy is dead, if 
         if (enemyHP <= 0)
         {
             Debug.Log("The " + enemyName + " has been defeated!");
@@ -86,18 +86,18 @@ public class ProjectTest : MonoBehaviour
     // Level up the player and increase the level-up threshold
     void LevelUpPlayer()
     {
-        if (playerLevel < 5) // if player level is below 5, the if function wont continue to the else statment without passing each threshold 
+        if (playerLevel <= 5) // if player level is below 5, the if function wont continue to the else statment without passing each threshold 
         {
-            playerLevel++;
+            playerLevel++; // the second plus represents the addition of 1 extra onto the players level
             playerEXP = 0; // Reset EXP
             expThreshold = Mathf.FloorToInt(expThreshold * 1.5f); // Increase the threshold for the next level
             Debug.Log("Level Up! Player is now level " + playerLevel);
             Debug.Log("Next level requires " + expThreshold + " EXP.");
 
             // After leveling up, allow the player to attack again
-            canAttack = true; // you pressed L and are allowed to attack again
+            canAttack = true; // You pressed L and are allowed to attack again
         }
-        else
+        else // this else statment only unlocks 
         {
             Debug.Log("Congratulations! You have reached level 5!");
             Debug.Log("You finished the game, Thanks for playing!");
@@ -107,9 +107,9 @@ public class ProjectTest : MonoBehaviour
     // Spawn a new enemy with a random level, name, and HP
     void SpawnNewEnemy()
     {
-        enemyLevel = Random.Range(1, 6); // Enemy level is between 1 and 5
-        enemyName = GetEnemyNameByLevel(enemyLevel); // Get the enemy name using a function
-        enemyHP = enemyLevel * 7; // HP is based on enemy level, e.g., level 1 has 7 HP, level 2 has 14 HP, etc.
+        enemyLevel = Random.Range(1, 6); // Enemy level is between 1 and 5, 6 cant be chosen as it is usually cannot randomise to the roof int
+        enemyName = GetEnemyNameByLevel(enemyLevel); // enemy name dictated by the enemy level
+        enemyHP = enemyLevel * 7; // HP is based on enemies level, level 1 has 7 HP, level 2 has 14 HP etc
 
         Debug.Log("Oh no... a " + enemyName + " has appeared! It's a level " + enemyLevel + " enemy with " + enemyHP + " HP.");
     }
@@ -117,7 +117,7 @@ public class ProjectTest : MonoBehaviour
     // Function to get the enemy name based on the enemy level
     string GetEnemyNameByLevel(int level)
     {
-        switch (level) // switch will run the level through the "GetEnemyByLevel" 
+        switch (level) // switch will run the level through the "GetEnemyByLevel" and depending on the case used "Names", it will return the code to spawn enemy class
         {
             case 1:
                 return "Slime";
@@ -130,7 +130,7 @@ public class ProjectTest : MonoBehaviour
             case 5:
                 return "Goblin Mage";
             default:
-                return "Unknown"; // In case the level is out of the expected range
+                return "Unknown"; // In case the level is not in propper range
         }
     }
 }
